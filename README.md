@@ -89,3 +89,7 @@ This project was built using various open-source libraries, frameworks, and APIs
 - [MongoDB](https://www.mongodb.com/)
 - [Zod](https://github.com/colinhacks/zod)
 - [Zustand](https://github.com/pmndrs/zustand)
+
+## Demo
+
+[Live Demo](https://stay-hub.vercel.app)
