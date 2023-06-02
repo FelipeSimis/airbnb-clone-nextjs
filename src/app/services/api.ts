@@ -5,7 +5,7 @@ export const fetchWrapper = async <T = unknown>(
   const data = await fetch(
     process.env.NODE_ENV === 'development'
       ? `http://localhost:3000${input}`
-      : `https://https://stay-hub.vercel.app/${input}`,
+      : `https://stay-hub.vercel.app${input}`,
     {
       ...init,
       headers: {
