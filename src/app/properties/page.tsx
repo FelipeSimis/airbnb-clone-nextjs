@@ -54,7 +54,11 @@ const PropertiesPage = async ({
 
   return (
     <Container>
-      <Heading title="Properties" subtitle="Properties you have listed" />
+      <Heading
+        title="Properties"
+        subtitle="Properties you have listed"
+        showBackLink
+      />
 
       {listings && <PropertiesClient properties={listings} />}
 

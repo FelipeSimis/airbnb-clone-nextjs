@@ -52,7 +52,11 @@ const ReservationsPage = async ({
 
   return (
     <Container>
-      <Heading title="Reservations" subtitle="Bookings on your properties" />
+      <Heading
+        title="Reservations"
+        subtitle="Bookings on your properties"
+        showBackLink
+      />
 
       <ReservationClient
         currentUser={currentUser}

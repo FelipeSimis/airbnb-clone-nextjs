@@ -50,7 +50,11 @@ const TripsPage = async ({ searchParams: { page } }: TripsPageProps) => {
 
   return (
     <Container>
-      <Heading title="Trips" subtitle="Where you been and where you're going" />
+      <Heading
+        title="Trips"
+        subtitle="Where you been and where you're going"
+        showBackLink
+      />
 
       <TripsClient reservations={reservations} currentUser={currentUser} />
 

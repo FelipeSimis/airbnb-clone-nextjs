@@ -130,7 +130,7 @@ const EditPropertyClient = ({ listing }: EditPropertyClientProps) => {
       <div className="mx-auto max-w-screen-lg">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
-            <Heading title="Edit your property" />
+            <Heading title="Edit your property" showBackLink />
 
             <ImageUpload
               value={watchImageSrc}

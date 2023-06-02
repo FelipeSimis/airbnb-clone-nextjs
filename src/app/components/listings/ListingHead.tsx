@@ -28,6 +28,7 @@ const ListingHead = ({
       <Heading
         title={title}
         subtitle={`${location?.region}, ${location?.label}`}
+        showBackLink
       />
 
       <div className="relative w-full overflow-hidden rounded-xl sm:h-[60vh]">
