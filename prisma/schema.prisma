@@ -63,6 +63,8 @@ model Listing {
   user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
   favorites    Favorite[]
+
+  @@index([userId, id, createdAt])
 }
 
 model Reservation {
@@ -77,6 +79,8 @@ model Reservation {
 
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@index([userId, listingId, startDate])
 }
 
 model Favorite {
@@ -90,4 +94,5 @@ model Favorite {
   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@unique([userId, listingId])
+  @@index([userId])
 }
