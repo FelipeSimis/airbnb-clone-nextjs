@@ -1,13 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { AiOutlineMenu } from '@react-icons/all-files/ai/AiOutlineMenu';
 
 import { useLoginModal, useRegisterModal, useRentModal } from '@hooks/useModal';
+import { useOutsideClick } from '@hooks/useOutsideClick';
 
 import Avatar from '@components/Avatar';
+import NavigationEvents from '@components/NavigationEvents';
 import MenuItem from './MenuItem';
 
 import { SafeUser } from '../../types';
@@ -19,9 +21,13 @@ type UserMenuProps = {
 const UserMenu = ({ currentUser }: UserMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const menuRef = useRef<HTMLDivElement>(null);
+
   const { openModal: openLoginModal } = useLoginModal();
   const { openModal: openRegisterModal } = useRegisterModal();
   const { openModal: openRentModal } = useRentModal();
+
+  useOutsideClick(menuRef, setIsOpen);
 
   const { push } = useRouter();
 
@@ -63,7 +69,10 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
       </div>
 
       {isOpen && (
-        <div className="absolute right-0 top-12 w-[40vw] overflow-hidden rounded-xl bg-white text-sm shadow-md md:w-3/4">
+        <div
+          ref={menuRef}
+          className="absolute right-0 top-12 w-[40vw] overflow-hidden rounded-xl bg-white text-sm shadow-md md:w-3/4"
+        >
           <div className="flex cursor-pointer flex-col">
             {currentUser ? (
               <>
@@ -95,6 +104,10 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
           </div>
         </div>
       )}
+
+      <Suspense>
+        <NavigationEvents setIsOpen={setIsOpen} />
+      </Suspense>
     </div>
   );
 };
