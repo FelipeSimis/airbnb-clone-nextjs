@@ -1,5 +1,3 @@
-Sure! Here's a sample README.md file for your Airbnb clone Next.js project:
-
 # Airbnb Clone Next.js
 
 This is a full-stack web application that replicates the functionality of Airbnb, built using Next.js, Tailwind CSS, and various other technologies.
