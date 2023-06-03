@@ -1,16 +1,23 @@
 import { RefObject, useCallback, useEffect } from 'react';
 
-export const useOutsideClick = (
-  ref: RefObject<HTMLDivElement>,
-  setIsOpen: (v: boolean) => void
-) => {
+type Props = {
+  ref: RefObject<HTMLDivElement>;
+  buttonRef?: RefObject<HTMLButtonElement>;
+  setIsOpen: (v: boolean) => void;
+};
+
+export const useOutsideClick = ({ ref, buttonRef, setIsOpen }: Props) => {
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
-      if (!ref.current?.contains(event.target as Node)) {
+      const isOutsideClick =
+        !ref.current?.contains(event.target as Node) &&
+        !buttonRef?.current?.contains(event.target as Node);
+
+      if (isOutsideClick) {
         setIsOpen(false);
       }
     },
-    [ref, setIsOpen]
+    [buttonRef, ref, setIsOpen]
   );
 
   useEffect(() => {

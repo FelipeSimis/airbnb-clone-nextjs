@@ -22,12 +22,17 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const { openModal: openLoginModal } = useLoginModal();
   const { openModal: openRegisterModal } = useRegisterModal();
   const { openModal: openRentModal } = useRentModal();
 
-  useOutsideClick(menuRef, setIsOpen);
+  useOutsideClick({
+    ref: menuRef,
+    buttonRef,
+    setIsOpen,
+  });
 
   const { push } = useRouter();
 
@@ -57,6 +62,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
         <button
           type="button"
           onClick={handleToggleMenu}
+          ref={buttonRef}
           aria-label="Open menu"
           className="flex items-center gap-3 rounded-full border-[1px] border-neutral-200 p-4 transition-colors hover:shadow-md md:px-2 md:py-1"
         >
