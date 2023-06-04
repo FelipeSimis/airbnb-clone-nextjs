@@ -10,7 +10,7 @@ import Heading from '@components/Heading';
 import Paginate from '@components/Paginate';
 import ReservationClient from './ReservationClient';
 
-import { ITEMS_PER_PAGE } from '../types';
+import { ITEMS_PER_PAGE } from '../../types';
 
 export const metadata: Metadata = {
   title: 'Airbnb | Reservations',

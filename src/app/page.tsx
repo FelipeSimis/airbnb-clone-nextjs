@@ -7,7 +7,7 @@ import ListingCard from '@components/listings/ListingCard';
 import HeartButton from '@components/HeartButton';
 import Paginate from '@components/Paginate';
 
-import { ITEMS_PER_PAGE, SafeListing } from './types';
+import { ITEMS_PER_PAGE, SafeListing } from '../types';
 
 type HomeProps = {
   searchParams: ListingParams;

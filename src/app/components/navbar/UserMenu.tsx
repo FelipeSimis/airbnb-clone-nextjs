@@ -12,7 +12,7 @@ import Avatar from '@components/Avatar';
 import NavigationEvents from '@components/NavigationEvents';
 import MenuItem from './MenuItem';
 
-import { SafeUser } from '../../types';
+import { SafeUser } from '../../../types';
 
 type UserMenuProps = {
   currentUser?: SafeUser | null;

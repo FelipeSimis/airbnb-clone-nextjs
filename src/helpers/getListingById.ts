@@ -1,4 +1,4 @@
-import prismaClient from '@components/libs/prismaDb';
+import prismaClient from '@libs/prismaDb';
 
 import { SafeListing, SafeUser } from '../types';
 

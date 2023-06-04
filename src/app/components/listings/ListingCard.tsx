@@ -10,7 +10,7 @@ import { useCountries } from '@hooks/useCountries';
 
 import Button from '@components/Button';
 
-import { SafeFavorite, SafeListing, SafeReservation } from '../../types';
+import { SafeFavorite, SafeListing, SafeReservation } from '../../../types';
 
 type ListingCardProps<T extends SafeListing | SafeFavorite> = {
   heartButton?: React.ReactNode;

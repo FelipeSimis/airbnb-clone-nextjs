@@ -1,10 +1,17 @@
-import prismaClient from '@components/libs/prismaDb';
+import { getServerSession } from 'next-auth';
 
-import { getSession } from '@helpers/getCurrentUser';
+import prismaClient from '@libs/prismaDb';
+import { authOptions } from '@libs/nextAuth';
 
-import { SafeUserWithFavorite } from '../types';
+import { SafeUser } from '../types';
 
-export async function getCurrentUserWithFavorites(): Promise<SafeUserWithFavorite | null> {
+export async function getSession() {
+  const session = await getServerSession(authOptions);
+
+  return session;
+}
+
+export async function getCurrentUser(): Promise<SafeUser | null> {
   try {
     const session = await getSession();
 
@@ -15,9 +22,6 @@ export async function getCurrentUserWithFavorites(): Promise<SafeUserWithFavorit
     const user = await prismaClient.user.findUnique({
       where: {
         email: session.user.email,
-      },
-      include: {
-        favorites: true,
       },
     });
 
@@ -30,7 +34,7 @@ export async function getCurrentUserWithFavorites(): Promise<SafeUserWithFavorit
       emailVerified: user.emailVerified?.toISOString() || undefined,
       createdAt: user.createdAt.toISOString(),
       updatedAt: user.updatedAt.toISOString(),
-    } satisfies SafeUserWithFavorite;
+    } satisfies SafeUser;
   } catch (error) {
     return null;
   }

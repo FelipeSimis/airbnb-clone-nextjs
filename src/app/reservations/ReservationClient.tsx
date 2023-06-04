@@ -9,7 +9,7 @@ import { fetchWrapper } from '@services/api';
 import ListingCard from '@components/listings/ListingCard';
 
 import HeartButton from '@components/HeartButton';
-import { SafeReservation, SafeUserWithFavorite } from '../types';
+import { SafeReservation, SafeUserWithFavorite } from '../../types';
 
 interface ReservationClientProps {
   reservations: SafeReservation[] | null;

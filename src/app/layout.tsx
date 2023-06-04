@@ -3,12 +3,12 @@ import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import dynamic from 'next/dynamic';
 
-import ToasterProvider from 'providers/ToasterProvider';
-
 import { getCurrentUser } from '@helpers/getCurrentUser';
 
 import { Navbar } from '@components/navbar';
 import UserMenu from '@components/navbar/UserMenu';
+
+import ToasterProvider from '@providers/ToasterProvider';
 
 import '@styles/globals.css';
 

@@ -5,7 +5,7 @@ import { AiOutlineHeart } from '@react-icons/all-files/ai/AiOutlineHeart';
 
 import { useFavorites } from '@hooks/useFavorites';
 
-import { SafeUserWithFavorite } from '../types';
+import { SafeUserWithFavorite } from '../../types';
 
 type HeartButtonProps = {
   listingId: string;

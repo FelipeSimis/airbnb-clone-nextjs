@@ -8,7 +8,7 @@ import { FiChevronRight } from '@react-icons/all-files/fi/FiChevronRight';
 
 import { usePagination } from '@hooks/usePagination';
 
-import { ITEMS_PER_PAGE } from '../types';
+import { ITEMS_PER_PAGE } from '../../types';
 
 type PaginateProps = {
   page?: number;

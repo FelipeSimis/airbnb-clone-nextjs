@@ -28,7 +28,7 @@ import CountrySelect, {
 import { Skeleton } from '@components/Skeleton';
 import Button from '@components/Button';
 
-import { SafeListing, SafeUser } from '../../../types';
+import { SafeListing, SafeUser } from '../../../../types';
 
 const Map = dynamic(() => import('@components/Map'), {
   ssr: false,

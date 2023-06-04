@@ -24,7 +24,7 @@ import {
   SafeUser,
   SafeUserWithFavorite,
   SafeReservation,
-} from '../../types';
+} from '../../../types';
 
 const initialDateRange = {
   startDate: new Date(),

@@ -13,15 +13,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "./src/app",
+    "baseUrl": "./src",
     "paths": {
-      "@components/*": ["./components/*"],
+      "@components/*": ["./app/components/*"],
       "@utils/*": ["./utils/*"],
       "@services/*": ["./services/*"],
       "@hooks/*": ["./hooks/*"],
       "@helpers/*": ["./helpers/*"],
-      "@context/*": ["./context/*"],
       "@libs/*": ["./libs/*"],
+      "@providers/*": ["./app/providers/*"],
       "@styles/*": ["./styles/*"],
       "@schemas/*": ["./schemas/*"],
       "@validations/*": ["./validations/*"]

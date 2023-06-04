@@ -5,7 +5,7 @@ import GithubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { compare } from 'bcrypt';
 
-import prisma from '@components/libs/prismaDb';
+import prisma from '@libs/prismaDb';
 
 const getGoogleCredentials = () => {
   const clientId = process.env.GOOGLE_CLIENT_ID;

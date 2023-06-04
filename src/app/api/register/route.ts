@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { hash } from 'bcrypt';
 
-import prismaClient from '@components/libs/prismaDb';
+import prismaClient from '@libs/prismaDb';
 
 import { signUpSchema } from '@schemas/signUpSchema';
 

@@ -10,7 +10,7 @@ import Paginate from '@components/Paginate';
 import Heading from '@components/Heading';
 import TripsClient from './TripsClient';
 
-import { ITEMS_PER_PAGE } from '../types';
+import { ITEMS_PER_PAGE } from '../../types';
 
 export const metadata: Metadata = {
   title: 'Airbnb | My trips',

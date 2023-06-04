@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import prismaClient from '@components/libs/prismaDb';
+import prismaClient from '@libs/prismaDb';
 
 import { getCurrentUser } from '@helpers/getCurrentUser';
 

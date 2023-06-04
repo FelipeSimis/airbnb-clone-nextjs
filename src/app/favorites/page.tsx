@@ -11,7 +11,7 @@ import ListingCard from '@components/listings/ListingCard';
 import HeartButton from '@components/HeartButton';
 import Paginate from '@components/Paginate';
 
-import { ITEMS_PER_PAGE, SafeFavorite } from '../types';
+import { ITEMS_PER_PAGE, SafeFavorite } from '../../types';
 
 export const metadata: Metadata = {
   title: 'Airbnb | My favorites',

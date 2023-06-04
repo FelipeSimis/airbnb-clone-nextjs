@@ -9,7 +9,7 @@ import { fetchWrapper } from '@services/api';
 import ListingCard from '@components/listings/ListingCard';
 import EditButton from '@components/EditButton';
 
-import { SafeListing } from '../types';
+import { SafeListing } from '../../types';
 
 interface PropertiesClientProps {
   properties: SafeListing[] | null;

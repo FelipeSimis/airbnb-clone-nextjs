@@ -9,7 +9,7 @@ import Avatar from '@components/Avatar';
 import ListingCategory from '@components/listings/ListingCategory';
 import { Skeleton } from '@components/Skeleton';
 
-import { SafeUser } from '../../types';
+import { SafeUser } from '../../../types';
 
 const Map = dynamic(() => import('@components/Map'), {
   ssr: false,
