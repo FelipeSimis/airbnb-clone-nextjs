@@ -34,7 +34,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
     setIsOpen,
   });
 
-  const { push } = useRouter();
+  const { push, prefetch } = useRouter();
 
   const handleToggleMenu = () => {
     setIsOpen(prev => !prev);
@@ -82,18 +82,25 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
           <div className="flex cursor-pointer flex-col">
             {currentUser ? (
               <>
-                <MenuItem label="My trips" onClick={() => push('/trips')} />
+                <MenuItem
+                  label="My trips"
+                  onClick={() => push('/trips')}
+                  onMouseEnter={() => prefetch('/trips')}
+                />
                 <MenuItem
                   label="My favorites"
                   onClick={() => push('/favorites')}
+                  onMouseEnter={() => prefetch('/favorites')}
                 />
                 <MenuItem
                   label="My reservations"
                   onClick={() => push('/reservations')}
+                  onMouseEnter={() => prefetch('/reservations')}
                 />
                 <MenuItem
                   label="My properties"
                   onClick={() => push('/properties')}
+                  onMouseEnter={() => prefetch('/properties')}
                 />
                 <MenuItem label="Airbnb my home" onClick={onRent} />
 
