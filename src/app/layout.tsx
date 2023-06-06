@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import dynamic from 'next/dynamic';
+import { Analytics } from '@vercel/analytics/react';
 
 import { getCurrentUser } from '@helpers/getCurrentUser';
 
@@ -47,6 +48,8 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
         <RentModal />
 
         <Navbar userMenu={<UserMenu currentUser={currentUser} />} />
+
+        <Analytics />
 
         <div className="pb-20 pt-28">{children}</div>
       </body>
