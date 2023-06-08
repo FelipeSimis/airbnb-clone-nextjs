@@ -27,6 +27,12 @@ export type SafeReservation = Omit<
   startDate: string;
   endDate: string;
   listing: SafeListing;
+  user:
+    | User
+    | {
+        image: string | null;
+        name: string | null;
+      };
 };
 
 export type SafeFavorite = Omit<Favorite, 'createdAt' | 'updatedAt'> & {

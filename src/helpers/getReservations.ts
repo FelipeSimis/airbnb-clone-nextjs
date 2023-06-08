@@ -31,6 +31,14 @@ export const getReservations = async ({
       where: query,
       include: {
         listing: true,
+        user: authorId
+          ? {
+              select: {
+                image: true,
+                name: true,
+              },
+            }
+          : false,
       },
       orderBy: {
         startDate: 'asc',

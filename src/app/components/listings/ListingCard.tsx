@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { CldImage } from 'next-cloudinary';
 
@@ -112,6 +113,22 @@ const ListingCard = <T extends SafeListing | SafeFavorite>({
 
           {!reservation && <span className="font-light"> night</span>}
         </div>
+
+        {reservation?.user && (
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-slate-400">
+              Reserved by {reservation.user.name}
+            </span>
+
+            <Image
+              src={reservation.user.image || '/images/user-placeholder.jpg'}
+              alt="User picture"
+              width={30}
+              height={30}
+              className="rounded-full"
+            />
+          </div>
+        )}
 
         {onAction && actionLabel && (
           <Button
