@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { getCurrentUserWithFavorites } from '@helpers/getCurrentUserWithFavorites';
+import { getListings } from '@helpers/getListings';
 import { getListingById } from '@helpers/getListingById';
 import { getReservations } from '@helpers/getReservations';
 
@@ -23,14 +24,36 @@ export async function generateMetadata({
   };
 }
 
-const ListingPage = async ({ params: { listingId } }: ListingPageProps) => {
-  const currentUser = await getCurrentUserWithFavorites();
-  const listing = await getListingById({ listingId });
-  const reservations = await getReservations({ listingId });
+export async function generateStaticParams() {
+  const listingsResult = await getListings({
+    page: 1,
+  });
 
-  return !listing ? (
-    <EmptyState />
-  ) : (
+  const { listings } = listingsResult ?? {
+    listings: [],
+  };
+
+  return listings.map(listing => ({
+    listingId: listing.id,
+  }));
+}
+
+const ListingPage = async ({ params: { listingId } }: ListingPageProps) => {
+  const listing = await getListingById({ listingId });
+
+  if (!listing) {
+    return <EmptyState />;
+  }
+
+  const currentUserData = getCurrentUserWithFavorites();
+  const reservationsData = getReservations({ listingId });
+
+  const [currentUser, reservations] = await Promise.all([
+    currentUserData,
+    reservationsData,
+  ]);
+
+  return (
     <ListingClient
       listing={listing}
       currentUser={currentUser}
