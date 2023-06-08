@@ -8,7 +8,7 @@ type EditButtonProps = {
 };
 
 const EditButton = ({ listingId }: EditButtonProps) => {
-  const { push } = useRouter();
+  const { push, prefetch } = useRouter();
 
   const handleEditProperty = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -21,6 +21,7 @@ const EditButton = ({ listingId }: EditButtonProps) => {
       type="button"
       aria-label="Edit property"
       onClick={handleEditProperty}
+      onMouseEnter={() => prefetch(`/properties/edit/${listingId}`)}
       title="Edit property"
       className="relative cursor-pointer transition-opacity hover:opacity-80 "
     >
