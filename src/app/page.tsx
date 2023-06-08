@@ -14,8 +14,13 @@ type HomeProps = {
 };
 
 const Home = async ({ searchParams }: HomeProps) => {
-  const currentUser = await getCurrentUserWithFavorites();
-  const listingsResult = await getListings(searchParams);
+  const currentUserData = getCurrentUserWithFavorites();
+  const listingsData = getListings(searchParams);
+
+  const [currentUser, listingsResult] = await Promise.all([
+    currentUserData,
+    listingsData,
+  ]);
 
   const { listings, totalItems } = listingsResult ?? {
     listings: [],
