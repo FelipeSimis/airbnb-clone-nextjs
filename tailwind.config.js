@@ -10,7 +10,7 @@ module.exports = {
         },
       },
       animation: {
-        skeleton: 'skeleton 1.5s linear infinite',
+        skeleton: 'skeleton 1s linear infinite',
       },
     },
   },
