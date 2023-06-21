@@ -82,10 +82,12 @@ const Paginate = ({ page, totalItems }: PaginateProps) => {
       <button
         type="button"
         aria-label={
-          currentPage === 1 ? undefined : `Go to page ${currentPage - 1}`
+          currentPage === 1
+            ? `Go to previous page (Disabled)`
+            : `Go to previous page`
         }
         disabled={currentPage - 1 === 0}
-        className="disabled:bg-200 flex h-8 w-8 items-center justify-center rounded-full bg-[#d7dade] text-black transition-colors hover:bg-[#b8c1cc]"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-[#d7dade] text-black transition-colors hover:bg-[#b8c1cc]"
         onClick={() => push(`${pathname}/?page=${currentPage - 1}`)}
       >
         <FiChevronLeft size={16} />
@@ -97,11 +99,11 @@ const Paginate = ({ page, totalItems }: PaginateProps) => {
         type="button"
         aria-label={
           currentPage === totalPages
-            ? undefined
-            : `Go to page ${currentPage + 1}`
+            ? `Go to next page (Disabled)`
+            : `Go to next page`
         }
         disabled={currentPage === totalPages}
-        className="disabled:bg-200 flex h-8 w-8 items-center justify-center rounded-full bg-[#d7dade] text-black transition-colors
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-[#d7dade] text-black transition-colors
         hover:bg-[#b8c1cc]"
         onClick={() => push(`${pathname}/?page=${currentPage + 1}`)}
       >
