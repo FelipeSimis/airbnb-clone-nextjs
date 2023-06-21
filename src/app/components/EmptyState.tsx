@@ -22,15 +22,15 @@ export const EmptyState = ({
     <div className="flex h-[60vh] flex-col items-center justify-center gap-2">
       <Heading title={title} subtitle={subtitle} />
 
-      <div className="mt-4 w-48">
-        {showResetButton && (
+      {showResetButton && (
+        <div className="mt-4 w-48">
           <Button
             outline
             label="Remove all filters"
             onClick={() => push('/')}
           />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
