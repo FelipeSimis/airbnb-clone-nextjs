@@ -1,16 +1,9 @@
 import type { Favorite, User, Listing, Reservation } from '@prisma/client';
 
-export type SafeUser = Omit<
-  User,
-  'emailVerified' | 'createdAt' | 'updatedAt'
-> & {
-  emailVerified: string | undefined;
-  createdAt: string;
-  updatedAt: string;
-};
+export type SafeUser = Pick<User, 'id' | 'name' | 'email' | 'image'>;
 
 export type SafeUserWithFavorite = SafeUser & {
-  favorites: Favorite[];
+  favorites: Pick<Favorite, 'listingId'>[];
 };
 
 export type SafeListing = Omit<Listing, 'createdAt' | 'updatedAt'> & {
@@ -35,9 +28,18 @@ export type SafeReservation = Omit<
       };
 };
 
-export type SafeFavorite = Omit<Favorite, 'createdAt' | 'updatedAt'> & {
-  createdAt: string;
-  updatedAt: string;
-} & { listing: SafeListing };
+export type SafeFavorite = {
+  id: string;
+  listingId: string;
+} & {
+  listing: {
+    id: string;
+    image: string;
+    title: string;
+    locationValue: string;
+    category: string;
+    price: number;
+  };
+};
 
 export const ITEMS_PER_PAGE = 10;
