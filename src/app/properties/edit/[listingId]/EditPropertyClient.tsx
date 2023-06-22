@@ -42,7 +42,7 @@ const ImageUpload = dynamic(() => import('@components/ImageUpload'), {
 
 type EditPropertyClientProps = {
   listing: SafeListing & {
-    user: SafeUser;
+    user: Pick<SafeUser, 'name' | 'image'>;
   };
 };
 
