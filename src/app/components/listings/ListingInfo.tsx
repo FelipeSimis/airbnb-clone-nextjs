@@ -5,11 +5,8 @@ import type { IconType } from '@react-icons/all-files';
 
 import { useCountries } from '@hooks/useCountries';
 
-import Avatar from '@components/Avatar';
 import ListingCategory from '@components/listings/ListingCategory';
 import { Skeleton } from '@components/Skeleton';
-
-import { SafeUser } from '../../../types';
 
 const Map = dynamic(() => import('@components/Map'), {
   ssr: false,
@@ -17,7 +14,7 @@ const Map = dynamic(() => import('@components/Map'), {
 });
 
 type ListingInfoProps = {
-  user: SafeUser;
+  userInfo: React.ReactNode;
   description: string;
   guestCount: number;
   roomCount: number;
@@ -33,7 +30,7 @@ type ListingInfoProps = {
 };
 
 const ListingInfo = ({
-  user,
+  userInfo,
   description,
   guestCount,
   roomCount,
@@ -48,11 +45,7 @@ const ListingInfo = ({
   return (
     <div className="col-span-4 flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-2 text-lg font-semibold">
-          <p>Hosted by {user.name}</p>
-
-          <Avatar src={user.image} />
-        </div>
+        {userInfo}
 
         <div className="flex items-center gap-4 font-light text-neutral-500">
           <span>{guestCount} guests</span>

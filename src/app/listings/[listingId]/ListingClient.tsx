@@ -14,6 +14,7 @@ import { eachDayOfInterval } from '@utils/eachDayOfInterval';
 import Container from '@components/Container';
 import { categories } from '@components/navbar/Categories';
 import ListingHead from '@components/listings/ListingHead';
+import Avatar from '@components/Avatar';
 import HeartButton from '@components/HeartButton';
 import ListingInfo from '@components/listings/ListingInfo';
 import ListingReservation from '@components/listings/ListingReservation';
@@ -35,10 +36,18 @@ const initialDateRange = {
 type ListingClientProps = {
   reservations?: SafeReservation[] | null;
   listing: SafeListing & {
-    user: SafeUser;
+    user: Pick<SafeUser, 'name' | 'image'>;
   };
   currentUser?: SafeUserWithFavorite | null;
 };
+
+const UserInfo = ({ name, image }: Pick<SafeUser, 'name' | 'image'>) => (
+  <div className="flex items-center gap-2 text-lg font-semibold">
+    <p>Hosted by {name}</p>
+
+    <Avatar src={image} />
+  </div>
+);
 
 const ListingClient = ({
   reservations = [],
@@ -147,7 +156,9 @@ const ListingClient = ({
               bathroomCount={listing.bathroomCount}
               category={category}
               locationValue={listing.locationValue}
-              user={listing.user}
+              userInfo={
+                <UserInfo name={listing.user.name} image={listing.user.image} />
+              }
             />
 
             <div className="order-first mb-10 md:order-last md:col-span-3">
