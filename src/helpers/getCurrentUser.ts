@@ -23,18 +23,19 @@ export async function getCurrentUser(): Promise<SafeUser | null> {
       where: {
         email: session.user.email,
       },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        image: true,
+      },
     });
 
     if (!user) {
       return null;
     }
 
-    return {
-      ...user,
-      emailVerified: user.emailVerified?.toISOString() || undefined,
-      createdAt: user.createdAt.toISOString(),
-      updatedAt: user.updatedAt.toISOString(),
-    } satisfies SafeUser;
+    return user;
   } catch (error) {
     return null;
   }

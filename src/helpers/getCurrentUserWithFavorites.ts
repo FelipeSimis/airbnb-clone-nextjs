@@ -16,8 +16,16 @@ export async function getCurrentUserWithFavorites(): Promise<SafeUserWithFavorit
       where: {
         email: session.user.email,
       },
-      include: {
-        favorites: true,
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        image: true,
+        favorites: {
+          select: {
+            listingId: true,
+          },
+        },
       },
     });
 
@@ -25,12 +33,7 @@ export async function getCurrentUserWithFavorites(): Promise<SafeUserWithFavorit
       return null;
     }
 
-    return {
-      ...user,
-      emailVerified: user.emailVerified?.toISOString() || undefined,
-      createdAt: user.createdAt.toISOString(),
-      updatedAt: user.updatedAt.toISOString(),
-    } satisfies SafeUserWithFavorite;
+    return user;
   } catch (error) {
     return null;
   }

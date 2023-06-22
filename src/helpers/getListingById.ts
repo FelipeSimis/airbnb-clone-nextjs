@@ -8,14 +8,21 @@ type GetListingByIdProps = {
 
 export async function getListingById({
   listingId,
-}: GetListingByIdProps): Promise<(SafeListing & { user: SafeUser }) | null> {
+}: GetListingByIdProps): Promise<
+  (SafeListing & { user: Pick<SafeUser, 'name' | 'image'> }) | null
+> {
   try {
     const listing = await prismaClient.listing.findUnique({
       where: {
         id: listingId,
       },
       include: {
-        user: true,
+        user: {
+          select: {
+            name: true,
+            image: true,
+          },
+        },
       },
     });
 
@@ -27,13 +34,7 @@ export async function getListingById({
       ...listing,
       createdAt: listing.createdAt.toISOString(),
       updatedAt: listing.updatedAt.toISOString(),
-      user: {
-        ...listing.user,
-        createdAt: listing.user.createdAt.toISOString(),
-        updatedAt: listing.user.createdAt.toISOString(),
-        emailVerified: listing.user.emailVerified?.toISOString(),
-      },
-    } satisfies SafeListing & { user: SafeUser };
+    } satisfies SafeListing & { user: Pick<SafeUser, 'name' | 'image'> };
   } catch (error) {
     return null;
   }

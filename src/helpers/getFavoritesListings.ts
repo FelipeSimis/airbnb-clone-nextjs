@@ -21,8 +21,19 @@ export const getFavoritesListings = async ({
       where: {
         userId,
       },
-      include: {
-        listing: true,
+      select: {
+        id: true,
+        listingId: true,
+        listing: {
+          select: {
+            id: true,
+            image: true,
+            title: true,
+            locationValue: true,
+            category: true,
+            price: true,
+          },
+        },
       },
       orderBy: {
         createdAt: 'desc',
@@ -37,18 +48,7 @@ export const getFavoritesListings = async ({
       },
     });
 
-    const safeFavorites = favorites.map(listing => ({
-      ...listing,
-      createdAt: listing.createdAt.toISOString(),
-      updatedAt: listing.updatedAt.toISOString(),
-      listing: {
-        ...listing.listing,
-        createdAt: listing.listing.createdAt.toISOString(),
-        updatedAt: listing.listing.updatedAt.toISOString(),
-      },
-    })) satisfies SafeFavorite[];
-
-    return { favoritesListings: safeFavorites, totalItems };
+    return { favoritesListings: favorites, totalItems };
   } catch (error) {
     return null;
   }
