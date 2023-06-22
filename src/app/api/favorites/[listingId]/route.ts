@@ -27,17 +27,17 @@ export async function POST(
     );
   }
 
-  const favorites = await prismaClient.favorite.create({
+  await prismaClient.favorite.create({
     data: {
       userId: currentUser.id,
       listingId,
     },
-    select: {
-      user: true,
-    },
   });
 
-  return NextResponse.json(favorites, { status: 201 });
+  return NextResponse.json(
+    { message: 'Favorite added with success!' },
+    { status: 201 }
+  );
 }
 
 export async function DELETE(
